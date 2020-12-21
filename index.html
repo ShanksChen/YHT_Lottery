@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>一海通7周年庆</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body class="body" scroll="no">
+    <div id="swfbg" class="text-center" style="position: absolute;top: 0;width: 100%;display: none;">
+        <div style="">
+            <param name="wmode" value="transparent" />
+            <embed id="mySwf" src="media/烟花.swf" quality="high" type="application/x-shockwave-flash" width="1003" height="600" wmode="transparent">
+        </div>
+    </div>
+    <div class="container" id="main">
+        <div class="row">
+            <img src="img/最大化.png" onclick="requestFullScreen()" class="min_max_button" style="position: absolute;left: 10px;" />
+            <img src="img/最小化.png" onclick="exitFullscreen()" class="min_max_button" style="position: absolute;right: 10px;" />
+        </div>
+        <div class="row text-center" id="ready" style="margin-top: 400px;color: #d42238;">
+            <!--在此处调整中奖者的位置-->
+            <div class="target" id="ready">Ready</div>
+        </div>
+        <div class="row text-center" id="name1" style="margin-top: 200px;color: #d42238; margin-left: 200px;position: absolute;display: none">
+            <!--在此处调整中奖者的位置-->
+            <div class="target" id="target1">Ready</div>
+        </div>
+        <div class="row text-center" id="name2" style="margin-top: 200px;color: #5cb85c; margin-left: 900px;position: absolute;display: none">
+            <!--在此处调整中奖者的位置-->
+            <div class="target" id="target2">Ready</div>
+        </div>
+        <div class="row text-center" id="name3" style="margin-top: 400px;color: #5cb85c; margin-left: 200px;position: absolute;display: none">
+            <!--在此处调整中奖者的位置-->
+            <div class="target" id="target3">Ready</div>
+        </div>
+        <div class="row text-center" id="name4" style="margin-top: 400px;color: #d42238; margin-left: 900px;position: absolute;display: none">
+            <!--在此处调整中奖者的位置-->
+            <div class="target" id="target4">Ready</div>
+        </div>
+        <div class="row text-center" id="btnblock" style="margin-top: 400px;margin-left: 750px;position: absolute">
+            <button class="btn-start" id="btn" onclick="start()">开始</button>
+        </div>
+        <div class="rowChange" style="margin-bottom: 20px">
+            <button class="btn-second" id="btn_second" onclick="changeToSecond()">二等奖</button>
+            <button class="btn-first" id="btn_first" onclick="changeToFirst()">一等奖</button>
+            <button class="btn-grand" id="btn_grand" onclick="changeToGrand()">特等奖</button>
+        </div>
+        <audio src="media/抽奖时候的音乐.mp3" id="bg_music" loop="true"></audio>
+        <audio src="media/中奖者诞生的音乐.mp3" id="stop_music"></audio>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
