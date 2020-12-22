@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>一等奖</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css" />
+    <style>
+        canvas{cursor:crosshair;display:block;left:0;position:absolute;top:0;z-index:20}
+    </style>
+</head>
+<body class="body" scroll="no">
+<div class="container" id="main">
+
+    <div class="row text-center" id="readyName" style="margin-top: 400px;color: #d42238;">
+        <!--在此处调整中奖者的位置-->
+        <div class="target" id="readyTarget">Ready</div>
+    </div>
+    <div class="row text-center" id="name1" style="margin-top: 200px;color: #d42238; margin-left: 200px;position: absolute;display: none">
+        <!--在此处调整中奖者的位置-->
+        <div class="target" id="target1">Ready</div>
+    </div>
+    <div class="row text-center" id="btnblock" style="margin-top: 200px">
+        <button class="btn-start" id="btn" onclick="startFrist()">开始</button>
+    </div>
+    <audio src="media/抽奖时候的音乐.mp3" id="bg_music" loop="true"></audio>
+    <audio src="media/中奖者诞生的音乐.mp3" id="stop_music"></audio>
+    <div class="rowChange" style="margin-bottom: 20px;position: absolute">
+        <button class="btn_goback" id="btn_goback" onclick="backToIndex()">返回</button>
+    </div>
+    <canvas id="canvas">Canvas is not supported in your browser.</canvas>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</html>
