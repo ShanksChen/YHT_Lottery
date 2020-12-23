@@ -459,7 +459,7 @@ function getThirdRewardName(all,thirdArr,thirdNoPick) {
         console.log("third：" + third)
         arr.remove(m4);
     } else {
-        var m2 = write(all,thirdNoPick);
+        var m4 = write(all,thirdNoPick);
         checkArrayAndRemove(third,m4);
         arr.remove(m4);
     }
