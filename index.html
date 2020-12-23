@@ -8,6 +8,9 @@
     <title>年会大乐透</title>
     <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css" />
+    <style>
+        canvas{cursor:crosshair;display:block;left:0;position:absolute;top:0;z-index:10}
+    </style>
 </head>
 
 <body class="body" scroll="no">
@@ -20,7 +23,10 @@
             <button class="btn-second" id="btn_second" onclick="changeToSecond()">二等奖</button>
             <button class="btn-frist" id="btn_frist" onclick="changeToFrist()">一等奖</button>
             <button class="btn-grand" id="btn_grand" onclick="changeToGrand()">特等奖</button>
+            <button class="btn-grand" id="btn_grand" onclick="changeToExtra()">加抽</button>
         </div>
+        <!-- setup our canvas element -->
+        <canvas id="canvas">Canvas is not supported in your browser.</canvas>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

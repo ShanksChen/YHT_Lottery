@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23b1f70d-79b6-4986-a650-97859aa190cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/YHT_Lottery.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frist.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/grand.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jquery-2.0.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/second.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/third.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extra.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/arr.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frist.html" beforeDir="false" afterPath="$PROJECT_DIR$/frist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grand.html" beforeDir="false" afterPath="$PROJECT_DIR$/grand.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/second.html" beforeDir="false" afterPath="$PROJECT_DIR$/second.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608601473377</updated>
       <workItem from="1608601475542" duration="18947000" />
+      <workItem from="1608685656297" duration="7070000" />
     </task>
     <servers />
   </component>
@@ -73,6 +71,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

@@ -18,18 +18,19 @@
         <!--在此处调整中奖者的位置-->
         <div class="target" id="readyTarget">Ready</div>
     </div>
-    <div class="row text-center" id="name1" style="margin-top: 200px;color: #d42238; margin-left: 200px;position: absolute;display: none">
+    <div class="row text-center" id="name1" style="margin-top: 200px;color: #d42238; margin-left: 690px;position: absolute;display: none">
         <!--在此处调整中奖者的位置-->
         <div class="target" id="target1">Ready</div>
     </div>
-    <div class="row text-center" id="btnblock" style="margin-top: 200px">
+    <div class="row text-center" id="gobackbutton" style="margin-top: 400px;display: none">
+        <button class="btn-start" id="btn_goback" onclick="backToIndex()">返回</button>
+    </div>
+    <div class="row text-center" id="btnblock" style="margin-top: 400px">
         <button class="btn-start" id="btn" onclick="startGrand()">开始</button>
     </div>
     <audio src="media/抽奖时候的音乐.mp3" id="bg_music" loop="true"></audio>
     <audio src="media/中奖者诞生的音乐.mp3" id="stop_music"></audio>
-    <div class="rowChange" style="margin-bottom: 20px;position: absolute">
-        <button class="btn_goback" id="btn_goback" onclick="backToIndex()">返回</button>
-    </div>
+
     <canvas id="canvas">Canvas is not supported in your browser.</canvas>
 </div>
 <script src="js/jquery.min.js"></script>

@@ -206,12 +206,40 @@ var fristNoPick = [
 
 var grand = [
     "2021008"
-]
+];
+
+var grandNoPick = [];
+var extra = [];
+var extraNoPick = [];
 
 var thirdName = [];
 var secondName = [];
 var fristName = [];
 var grandName = [];
+var extraName = [];
+
+
+if(!window.localStorage.getItem("arr")){
+    window.localStorage.setItem("arr",JSON.stringify(arr));
+} else {
+    arr = JSON.parse(window.localStorage.getItem("arr"));
+}
+if(!window.localStorage.getItem("thirdName")){
+    window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
+}
+if(!window.localStorage.getItem("secondName")){
+    window.localStorage.setItem("secondName",JSON.stringify(secondName));
+}
+if(!window.localStorage.getItem("fristName")){
+    window.localStorage.setItem("fristName",JSON.stringify(fristName));
+}
+if(!window.localStorage.getItem("grandName")){
+    window.localStorage.setItem("grandName",JSON.stringify(grandName));
+}
+if(!window.localStorage.getItem("extraName")){
+    window.localStorage.setItem("extraName",JSON.stringify(extraName));
+}
+
 
 var bg_music = document.getElementById("bg_music");
 var stop_music = document.getElementById("stop_music");
@@ -221,40 +249,22 @@ $(document).ready(function() {
     $(".body").css("width", $(window).width());
 })
 
-//进入全屏
-function requestFullScreen() {
-    var de = document.documentElement;
-    if (de.requestFullscreen) {
-        de.requestFullscreen();
-    } else if (de.mozRequestFullScreen) {
-        de.mozRequestFullScreen();
-    } else if (de.webkitRequestFullScreen) {
-        de.webkitRequestFullScreen();
-    }
-
-    setTimeout("$('.body').css('height', $(window).height());", 100);
-    setTimeout("$('.body').css('height', $(window).height());", 300);
-    setTimeout("$('.body').css('height', $(window).height());", 500); //确保高度等于屏幕高度
-}
-//退出全屏
-function exitFullscreen() {
-    var de = document;
-    if (de.exitFullscreen) {
-        de.exitFullscreen();
-    } else if (de.mozCancelFullScreen) {
-        de.mozCancelFullScreen();
-    } else if (de.webkitCancelFullScreen) {
-        de.webkitCancelFullScreen();
-    }
-    setTimeout("$('.body').css('height', $(window).height());", 100);
-    setTimeout("$('.body').css('height', $(window).height());", 300);
-    setTimeout("$('.body').css('height', $(window).height());", 500); //确保高度等于屏幕高度
+function readFile(filename){
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var f = fso.OpenTextFile(filename,1);
+    var s = "";
+    while (!f.AtEndOfStream)
+        s += f.ReadLine()+"\n";
+    f.Close();
+    return s;
 }
 
 function startThird() {
     if (!pressed) {
         if (thirdName.length == 12) {
             console.log("thirdName = " + thirdName);
+            window.localStorage.setItem("arr",JSON.stringify(arr));
+            window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
             nameHidden();
             readyShow();
             $("#btn").hide();
@@ -289,15 +299,131 @@ function startThird() {
 }
 
 function startSecond() {
-
+    if (!pressed) {
+        if (secondName.length == 6) {
+            console.log("secondName = " + secondName);
+            window.localStorage.setItem("arr",JSON.stringify(arr));
+            window.localStorage.setItem("secondName",JSON.stringify(secondName));
+            nameHidden();
+            readyShow();
+            $("#btn").hide();
+        } else {
+            readyHidden();
+            nameShow();
+            cancelAniFrame();
+            pressed = true;
+            bg_music.currentTime = 0;
+            bg_music.play();
+            $('#btnblock')[0].style.setProperty('margin-top', '900px');
+            $('#btn').text("结束");
+            id1 = setInterval("document.getElementById('target1').innerHTML = show(arr);", 50);
+            id2 = setInterval("document.getElementById('target2').innerHTML = show(arr);", 50);
+        }
+    } else {
+        clearInterval(id1);
+        clearInterval(id2);
+        loop();
+        pressed = false;
+        bg_music.pause();
+        bg_music.currentTime = 0;
+        stop_music.currentTime = 0;
+        stop_music.play();
+        getSecondRewardName(arr,second,secondNoPick);
+        $('#btn').text("开始");
+    }
 }
 
 function startFrist() {
-
+    if (!pressed) {
+        if (fristName.length == 3) {
+            console.log("fristName = " + fristName);
+            window.localStorage.setItem("arr",JSON.stringify(arr));
+            window.localStorage.setItem("fristName",JSON.stringify(fristName));
+            nameHidden();
+            readyShow();
+            $("#btn").hide();
+        } else {
+            readyHidden();
+            nameShow();
+            cancelAniFrame();
+            pressed = true;
+            bg_music.currentTime = 0;
+            bg_music.play();
+            $('#btnblock')[0].style.setProperty('margin-top', '900px');
+            $('#btn').text("结束");
+            id = setInterval("document.getElementById('target1').innerHTML = show(arr);", 50);
+        }
+    } else {
+        clearInterval(id);
+        loop();
+        pressed = false;
+        bg_music.pause();
+        bg_music.currentTime = 0;
+        stop_music.currentTime = 0;
+        stop_music.play();
+        getFristRewardName(arr,frist,fristNoPick);
+        $('#btn').text("开始");
+    }
 }
 
 function startGrand() {
+    if (!pressed) {
+        if (grandName.length == 1) {
+            console.log("grandName = " + grandName);
+            window.localStorage.setItem("arr",JSON.stringify(arr));
+            window.localStorage.setItem("grandName",JSON.stringify(grandName));
+            nameHidden();
+            readyShow();
+            $("#btn").hide();
+        } else {
+            readyHidden();
+            nameShow();
+            cancelAniFrame();
+            pressed = true;
+            bg_music.currentTime = 0;
+            bg_music.play();
+            $('#btnblock')[0].style.setProperty('margin-top', '900px');
+            $('#btn').text("结束");
+            id = setInterval("document.getElementById('target1').innerHTML = show(arr);", 50);
+        }
+    } else {
+        clearInterval(id);
+        loop();
+        pressed = false;
+        bg_music.pause();
+        bg_music.currentTime = 0;
+        stop_music.currentTime = 0;
+        stop_music.play();
+        getGrandRewardName(arr,grand,grandNoPick);
+        $('#btn').text("开始");
+    }
+}
 
+function startExtra() {
+    if (!pressed) {
+        console.log("extraName = " + extraName);
+        window.localStorage.setItem("arr",JSON.stringify(arr));
+        window.localStorage.setItem("extraName",JSON.stringify(extraName));
+        readyHidden();
+        nameShow();
+        cancelAniFrame();
+        pressed = true;
+        bg_music.currentTime = 0;
+        bg_music.play();
+        $('#btnblock')[0].style.setProperty('margin-top', '900px');
+        $('#btn').text("结束");
+        id = setInterval("document.getElementById('target1').innerHTML = show(arr);", 50);
+    } else {
+        clearInterval(id);
+        loop();
+        pressed = false;
+        bg_music.pause();
+        bg_music.currentTime = 0;
+        stop_music.currentTime = 0;
+        stop_music.play();
+        getExtraRewardName(arr,extra,extraNoPick);
+        $('#btn').text("开始");
+    }
 }
 
 function checkArrayAndRemove(array, element){
@@ -326,30 +452,129 @@ function getThirdRewardName(all,thirdArr,thirdNoPick) {
     var m3 = write(all,thirdNoPick);
     checkArrayAndRemove(third,m3);
     arr.remove(m3);
-    var m4 = write(all,thirdNoPick);
-    checkArrayAndRemove(third,m4);
-    arr.remove(m4);
+    if (thirdArr.length >0) {
+        var m4 = write(thirdArr,thirdNoPick);
+        console.log("m4：" + m4)
+        third.remove(m4);
+        console.log("third：" + third)
+        arr.remove(m4);
+    } else {
+        var m2 = write(all,thirdNoPick);
+        checkArrayAndRemove(third,m4);
+        arr.remove(m4);
+    }
     thirdName.push(m1,m2,m3,m4);
     if (arr != null) {
         document.getElementById('target1').innerHTML = m1;
         document.getElementById('target2').innerHTML = m2;
         document.getElementById('target3').innerHTML = m3;
         document.getElementById('target4').innerHTML = m4;
-        console.log("已中奖：" + thirdName)
+        console.log("三等奖：" + thirdName);
+        console.log("二等奖：" + secondName);
+        console.log("一等奖：" + fristName);
+        console.log("特等奖：" + grandName);
+        console.log("加抽奖：" + extraName);
+        console.log("未中奖：" + arr);
+    }
+}
+
+function getSecondRewardName(all,secondArr,secondNoPick) {
+    console.log("secondArr：" + secondArr);
+    console.log("secondNoPick：" + secondNoPick);
+    var m1 = write(all,secondNoPick);
+    checkArrayAndRemove(second,m1);
+    arr.remove(m1);
+    if (secondArr.length >0) {
+        var m2 = write(secondArr,secondNoPick);
+        console.log("m2：" + m2)
+        secondArr.remove(m2);
+        console.log("second：" + second)
+        arr.remove(m2);
+    } else {
+        var m2 = write(all,secondNoPick);
+        checkArrayAndRemove(second,m2);
+        arr.remove(m2);
+    }
+    secondName.push(m1,m2);
+    if (arr != null) {
+        document.getElementById('target1').innerHTML = m1;
+        document.getElementById('target2').innerHTML = m2;
+        console.log("三等奖：" + thirdName)
+        console.log("二等奖：" + secondName)
+        console.log("一等奖：" + fristName)
+        console.log("特等奖：" + grandName)
+        console.log("加抽奖：" + extraName)
         console.log("未中奖：" + arr)
     }
 }
 
-function getSecondRewardName(all,secondArr) {
-
+function getFristRewardName(all,fristArr,fristNoPick) {
+    console.log("fristArr：" + fristArr);
+    console.log("fristNoPick：" + fristNoPick);
+    if (fristArr.length >0) {
+        var m = write(fristArr,fristNoPick);
+        console.log("m：" + m)
+        fristArr.remove(m);
+        console.log("frist：" + frist)
+        arr.remove(m);
+    } else {
+        var m = write(all,fristNoPick);
+        checkArrayAndRemove(frist,m);
+        arr.remove(m);
+    }
+    fristName.push(m);
+    if (arr != null) {
+        document.getElementById('target1').innerHTML = m;
+        console.log("三等奖：" + thirdName)
+        console.log("二等奖：" + secondName)
+        console.log("一等奖：" + fristName)
+        console.log("特等奖：" + grandName)
+        console.log("加抽奖：" + extraName)
+        console.log("未中奖：" + arr)
+    }
 }
 
-function getFristRewardName(all,fristArr) {
-
+function getGrandRewardName(all,grandArr,grandNoPick) {
+    console.log("grandArr：" + grandArr);
+    console.log("grandNoPick：" + grandNoPick);
+    if (grandArr.length >0) {
+        var m = write(grandArr,grandNoPick);
+        console.log("m：" + m)
+        grandArr.remove(m);
+        console.log("grand：" + grand)
+        arr.remove(m);
+    } else {
+        var m = write(all,grandNoPick);
+        checkArrayAndRemove(grand,m);
+        arr.remove(m);
+    }
+    grandName.push(m);
+    if (arr != null) {
+        document.getElementById('target1').innerHTML = m;
+        console.log("三等奖：" + thirdName)
+        console.log("二等奖：" + secondName)
+        console.log("一等奖：" + fristName)
+        console.log("特等奖：" + grandName)
+        console.log("加抽奖：" + extraName)
+        console.log("未中奖：" + arr)
+    }
 }
 
-function getGrandRewardName(all,grandArr) {
-
+function getExtraRewardName(all,extraArr,extraNoPick) {
+    console.log("extraArr：" + extraArr);
+    console.log("extraNoPick：" + extraNoPick);
+    var m = write(all,extraNoPick);
+    arr.remove(m);
+    extraName.push(m);
+    if (arr != null) {
+        document.getElementById('target1').innerHTML = m;
+        console.log("三等奖：" + thirdName)
+        console.log("二等奖：" + secondName)
+        console.log("一等奖：" + fristName)
+        console.log("特等奖：" + grandName)
+        console.log("加抽奖：" + extraName)
+        console.log("未中奖：" + arr)
+    }
 }
 
 function changeToThird() {
@@ -366,6 +591,10 @@ function changeToFrist() {
 
 function changeToGrand() {
     window.location = 'grand.html';
+}
+
+function changeToExtra() {
+    window.location = 'extra.html';
 }
 
 function backToIndex() {
@@ -404,13 +633,13 @@ function show(array) {
 }
 
 function write(array,noPickArray) {
-    console.log("————————————————————begin write-----------------------");
-    console.log("in write: array = " + array);
-    console.log("in write: noPickArray = " + noPickArray);
+    // console.log("————————————————————begin write-----------------------");
+    // console.log("in write: array = " + array);
+    // console.log("in write: noPickArray = " + noPickArray);
     var one = getOne(array,noPickArray);
-    console.log("in write: one = " + one);
+    // console.log("in write: one = " + one);
     var index = $.inArray(one, targeted);
-    console.log("————————————————————end write-----------------------");
+    // console.log("————————————————————end write-----------------------");
     return one;
 }
 
@@ -420,16 +649,16 @@ function getOne(array,noPickArray) {
     var length = array.length;
     if (length > 0) {
         var num = Math.ceil(Math.random() * length) - 1;
-        console.log("in getOne: array[num] = " + array[num]);
+        // console.log("in getOne: array[num] = " + array[num]);
         if ($.inArray(array[num], noPickArray) >= 0) {
-            console.log("————————————————————end getOne in >0  -----------------------" + array[num]);
+            // console.log("————————————————————end getOne in >0  -----------------------" + array[num]);
             return getOne(array,noPickArray);
         } else {
-            console.log("————————————————————end getOne in <=0 -----------------------" + array[num]);
+            // console.log("————————————————————end getOne in <=0 -----------------------" + array[num]);
             return array[num];
         }
     } else {
-        console.log("————————————————————end getOne-----------------------");
+        // console.log("————————————————————end getOne-----------------------");
         return "已经全部抽完！"
     }
 }
