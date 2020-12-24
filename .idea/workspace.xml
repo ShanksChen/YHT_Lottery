@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23b1f70d-79b6-4986-a650-97859aa190cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/img/01.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/arr.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extra.html" beforeDir="false" afterPath="$PROJECT_DIR$/extra.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frist.html" beforeDir="false" afterPath="$PROJECT_DIR$/frist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grand.html" beforeDir="false" afterPath="$PROJECT_DIR$/grand.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/second.html" beforeDir="false" afterPath="$PROJECT_DIR$/second.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/third.html" beforeDir="false" afterPath="$PROJECT_DIR$/third.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +56,7 @@
       <workItem from="1608601475542" duration="18947000" />
       <workItem from="1608685656297" duration="7070000" />
       <workItem from="1608713122740" duration="1722000" />
+      <workItem from="1608796481124" duration="4451000" />
     </task>
     <servers />
   </component>

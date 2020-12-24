@@ -171,47 +171,16 @@ var arr = [
     "2021149",
     "2021150"
 ];
-
-var third = [
-    "2021001",
-    "2021002",
-    "2021003",
-    "2021004"
-];
-
-var thirdNoPick = [
-    "2021005",
-    "2021006",
-    "2021007",
-    "2021008"
-];
-
-var second = [
-    "2021005",
-    "2021006"
-];
-
-var secondNoPick = [
-    "2021007",
-    "2021008"
-];
-
-var frist = [
-    "2021007"
-];
-
-var fristNoPick = [
-    "2021008"
-];
-
-var grand = [
-    "2021008"
-];
-
+var third = [];
+var thirdNoPick = [];
+var second = [];
+var secondNoPick = [];
+var frist = [];
+var fristNoPick = [];
+var grand = [];
 var grandNoPick = [];
 var extra = [];
 var extraNoPick = [];
-
 var thirdName = [];
 var secondName = [];
 var fristName = [];
@@ -261,7 +230,7 @@ function readFile(filename){
 
 function startThird() {
     if (!pressed) {
-        if (thirdName.length == 12) {
+        if (thirdName.length == 15) {
             console.log("thirdName = " + thirdName);
             window.localStorage.setItem("arr",JSON.stringify(arr));
             window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
@@ -280,13 +249,11 @@ function startThird() {
             id1 = setInterval("document.getElementById('target1').innerHTML = show(arr);", 50);
             id2 = setInterval("document.getElementById('target2').innerHTML = show(arr);", 50);
             id3 = setInterval("document.getElementById('target3').innerHTML = show(arr);", 50);
-            id4 = setInterval("document.getElementById('target4').innerHTML = show(arr);", 50);
         }
     } else {
         clearInterval(id1);
         clearInterval(id2);
         clearInterval(id3);
-        clearInterval(id4);
         loop();
         pressed = false;
         bg_music.pause();
@@ -295,12 +262,18 @@ function startThird() {
         stop_music.play();
         getThirdRewardName(arr,third,thirdNoPick);
         $('#btn').text("开始");
+        thirdNameTmp = JSON.parse(window.localStorage.getItem("thirdName"));
+        if(!isEmpty(thirdNameTmp)) {
+            thirdName = mergerArr(thirdNameTmp,thirdName);
+        }
+        thirdNameTmp = [];
+        window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
     }
 }
 
 function startSecond() {
     if (!pressed) {
-        if (secondName.length == 6) {
+        if (secondName.length == 8) {
             console.log("secondName = " + secondName);
             window.localStorage.setItem("arr",JSON.stringify(arr));
             window.localStorage.setItem("secondName",JSON.stringify(secondName));
@@ -330,6 +303,12 @@ function startSecond() {
         stop_music.play();
         getSecondRewardName(arr,second,secondNoPick);
         $('#btn').text("开始");
+        secondNameTmp = JSON.parse(window.localStorage.getItem("secondName"));
+        if(!isEmpty(secondNameTmp)) {
+            secondName = mergerArr(secondNameTmp,secondName);
+        }
+        secondNameTmp = [];
+        window.localStorage.setItem("secondName",JSON.stringify(secondName));
     }
 }
 
@@ -338,7 +317,7 @@ function startFrist() {
         if (fristName.length == 3) {
             console.log("fristName = " + fristName);
             window.localStorage.setItem("arr",JSON.stringify(arr));
-            window.localStorage.setItem("fristName",JSON.stringify(fristName));
+            // window.localStorage.setItem("fristName",JSON.stringify(fristName));
             nameHidden();
             readyShow();
             $("#btn").hide();
@@ -351,10 +330,14 @@ function startFrist() {
             bg_music.play();
             $('#btnblock')[0].style.setProperty('margin-top', '900px');
             $('#btn').text("结束");
-            id = setInterval("document.getElementById('target1').innerHTML = show(arr);", 50);
+            id1 = setInterval("document.getElementById('target1').innerHTML = show(arr);", 50);
+            id2 = setInterval("document.getElementById('target2').innerHTML = show(arr);", 50);
+            id3 = setInterval("document.getElementById('target3').innerHTML = show(arr);", 50);
         }
     } else {
-        clearInterval(id);
+        clearInterval(id1);
+        clearInterval(id2);
+        clearInterval(id3);
         loop();
         pressed = false;
         bg_music.pause();
@@ -363,6 +346,12 @@ function startFrist() {
         stop_music.play();
         getFristRewardName(arr,frist,fristNoPick);
         $('#btn').text("开始");
+        fristNameTmp = JSON.parse(window.localStorage.getItem("fristName"));
+        if(!isEmpty(fristNameTmp)) {
+            fristName = mergerArr(fristNameTmp,fristName);
+        }
+        fristNameTmp = [];
+        window.localStorage.setItem("fristName",JSON.stringify(fristName));
     }
 }
 
@@ -403,7 +392,6 @@ function startExtra() {
     if (!pressed) {
         console.log("extraName = " + extraName);
         window.localStorage.setItem("arr",JSON.stringify(arr));
-        window.localStorage.setItem("extraName",JSON.stringify(extraName));
         readyHidden();
         nameShow();
         cancelAniFrame();
@@ -423,6 +411,12 @@ function startExtra() {
         stop_music.play();
         getExtraRewardName(arr,extra,extraNoPick);
         $('#btn').text("开始");
+        extraNameTmp = JSON.parse(window.localStorage.getItem("extraName"));
+        if(!isEmpty(extraNameTmp)) {
+            extraName = mergerArr(extraNameTmp,extraName);
+        }
+        extraNameTmp = [];
+        window.localStorage.setItem("extraName",JSON.stringify(extraName));
     }
 }
 
@@ -452,23 +446,11 @@ function getThirdRewardName(all,thirdArr,thirdNoPick) {
     var m3 = write(all,thirdNoPick);
     checkArrayAndRemove(third,m3);
     arr.remove(m3);
-    if (thirdArr.length >0) {
-        var m4 = write(thirdArr,thirdNoPick);
-        console.log("m4：" + m4)
-        third.remove(m4);
-        console.log("third：" + third)
-        arr.remove(m4);
-    } else {
-        var m4 = write(all,thirdNoPick);
-        checkArrayAndRemove(third,m4);
-        arr.remove(m4);
-    }
-    thirdName.push(m1,m2,m3,m4);
+    thirdName.push(m1,m2,m3);
     if (arr != null) {
         document.getElementById('target1').innerHTML = m1;
         document.getElementById('target2').innerHTML = m2;
         document.getElementById('target3').innerHTML = m3;
-        document.getElementById('target4').innerHTML = m4;
         console.log("三等奖：" + thirdName);
         console.log("二等奖：" + secondName);
         console.log("一等奖：" + fristName);
@@ -512,19 +494,27 @@ function getFristRewardName(all,fristArr,fristNoPick) {
     console.log("fristArr：" + fristArr);
     console.log("fristNoPick：" + fristNoPick);
     if (fristArr.length >0) {
-        var m = write(fristArr,fristNoPick);
-        console.log("m：" + m)
-        fristArr.remove(m);
+        var m1 = write(fristArr,fristNoPick);
+        console.log("m：" + m1)
+        fristArr.remove(m1);
         console.log("frist：" + frist)
-        arr.remove(m);
+        arr.remove(m1);
     } else {
-        var m = write(all,fristNoPick);
-        checkArrayAndRemove(frist,m);
-        arr.remove(m);
+        var m1 = write(all,fristNoPick);
+        checkArrayAndRemove(frist,m1);
+        arr.remove(m1);
     }
-    fristName.push(m);
+    var m2 = write(all,fristNoPick);
+    checkArrayAndRemove(frist,m2);
+    arr.remove(m2);
+    var m3 = write(all,fristNoPick);
+    checkArrayAndRemove(frist,m3);
+    arr.remove(m3);
+    fristName.push(m1,m2,m3);
     if (arr != null) {
-        document.getElementById('target1').innerHTML = m;
+        document.getElementById('target1').innerHTML = m1;
+        document.getElementById('target2').innerHTML = m2;
+        document.getElementById('target3').innerHTML = m3;
         console.log("三等奖：" + thirdName)
         console.log("二等奖：" + secondName)
         console.log("一等奖：" + fristName)
@@ -551,12 +541,12 @@ function getGrandRewardName(all,grandArr,grandNoPick) {
     grandName.push(m);
     if (arr != null) {
         document.getElementById('target1').innerHTML = m;
-        console.log("三等奖：" + thirdName)
-        console.log("二等奖：" + secondName)
-        console.log("一等奖：" + fristName)
-        console.log("特等奖：" + grandName)
-        console.log("加抽奖：" + extraName)
-        console.log("未中奖：" + arr)
+        console.log("三等奖：" + thirdName);
+        console.log("二等奖：" + secondName);
+        console.log("一等奖：" + fristName);
+        console.log("特等奖：" + grandName);
+        console.log("加抽奖：" + extraName);
+        console.log("未中奖：" + arr);
     }
 }
 
@@ -568,12 +558,12 @@ function getExtraRewardName(all,extraArr,extraNoPick) {
     extraName.push(m);
     if (arr != null) {
         document.getElementById('target1').innerHTML = m;
-        console.log("三等奖：" + thirdName)
-        console.log("二等奖：" + secondName)
-        console.log("一等奖：" + fristName)
-        console.log("特等奖：" + grandName)
-        console.log("加抽奖：" + extraName)
-        console.log("未中奖：" + arr)
+        console.log("三等奖：" + thirdName);
+        console.log("二等奖：" + secondName);
+        console.log("一等奖：" + fristName);
+        console.log("特等奖：" + grandName);
+        console.log("加抽奖：" + extraName);
+        console.log("未中奖：" + arr);
     }
 }
 
@@ -661,6 +651,54 @@ function getOne(array,noPickArray) {
         // console.log("————————————————————end getOne-----------------------");
         return "已经全部抽完！"
     }
+}
+
+function isEmpty (val) {
+    // null or undefined
+    if (val == null) return true;
+
+    if (typeof val === 'boolean') return false;
+
+    if (typeof val === 'number') return !val;
+
+    if (val instanceof Error) return val.message === '';
+
+    switch (Object.prototype.toString.call(val)) {
+        // String or Array
+        case '[object String]':
+        case '[object Array]':
+            return !val.length;
+
+        // Map or Set or File
+        case '[object File]':
+        case '[object Map]':
+        case '[object Set]': {
+            return !val.size;
+        }
+        // Plain Object
+        case '[object Object]': {
+            return !Object.keys(val).length;
+        }
+    }
+
+    return false;
+}
+
+function mergerArr(arr1,arr2){
+    var flag;
+    for(var i = 0;i<arr1.length;i++){
+        flag = false;
+        for(var j=0;j<arr2.length;j++){
+            if(arr1[i] == arr2[j]){
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
+            arr2.push(arr1[i]);
+        }
+    }
+    return arr2;
 }
 
 //-------------------------------------------华丽的分割线-----------------------------------------------------
