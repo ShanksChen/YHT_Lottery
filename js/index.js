@@ -218,15 +218,6 @@ $(document).ready(function() {
     $(".body").css("width", $(window).width());
 })
 
-function readFile(filename){
-    var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var f = fso.OpenTextFile(filename,1);
-    var s = "";
-    while (!f.AtEndOfStream)
-        s += f.ReadLine()+"\n";
-    f.Close();
-    return s;
-}
 
 function startThird() {
     if (!pressed) {
@@ -623,32 +614,23 @@ function show(array) {
 }
 
 function write(array,noPickArray) {
-    // console.log("————————————————————begin write-----------------------");
-    // console.log("in write: array = " + array);
-    // console.log("in write: noPickArray = " + noPickArray);
     var one = getOne(array,noPickArray);
-    // console.log("in write: one = " + one);
     var index = $.inArray(one, targeted);
-    // console.log("————————————————————end write-----------------------");
     return one;
 }
 
 function getOne(array,noPickArray) {
-    console.log("————————————————————begin getOne-----------------------");
     var name = '';
     var length = array.length;
     if (length > 0) {
-        var num = Math.ceil(Math.random() * length) - 1;
-        // console.log("in getOne: array[num] = " + array[num]);
+        var seed = Math.ceil(Math.random() * length);
+        var num = seed != 0 ? seed - 1: seed;
         if ($.inArray(array[num], noPickArray) >= 0) {
-            // console.log("————————————————————end getOne in >0  -----------------------" + array[num]);
             return getOne(array,noPickArray);
         } else {
-            // console.log("————————————————————end getOne in <=0 -----------------------" + array[num]);
             return array[num];
         }
     } else {
-        // console.log("————————————————————end getOne-----------------------");
         return "已经全部抽完！"
     }
 }
