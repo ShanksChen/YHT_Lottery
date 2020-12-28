@@ -220,14 +220,21 @@ $(document).ready(function() {
 
 
 function startThird() {
+    var thirdInLocal = JSON.parse(window.localStorage.getItem("thirdName"))
     if (!pressed) {
-        if (thirdName.length == 15) {
+        console.log("thirdInLocal = " + thirdInLocal);
+        console.log("thirdInLocal,length = " + thirdInLocal.length);
+        if (thirdName.length == 15 || thirdInLocal.length == 15) {
             console.log("thirdName = " + thirdName);
-            window.localStorage.setItem("arr",JSON.stringify(arr));
-            window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
+            if(thirdInLocal != 15) {
+                window.localStorage.setItem("arr",JSON.stringify(arr));
+                window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
+            }
+            $('#btnblock')[0].style.setProperty('margin-top', '398px');
             nameHidden();
             readyShow();
             $("#btn").hide();
+            $("#btn_goback").show();
         } else {
             readyHidden();
             nameShow();
@@ -258,19 +265,27 @@ function startThird() {
             thirdName = mergerArr(thirdNameTmp,thirdName);
         }
         thirdNameTmp = [];
-        window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
+        if(thirdInLocal != 15) {
+            window.localStorage.setItem("thirdName",JSON.stringify(thirdName));
+        }
+
     }
 }
 
 function startSecond() {
     if (!pressed) {
-        if (secondName.length == 8) {
+        var secondInLocal = JSON.parse(window.localStorage.getItem("secondName"))
+        if (secondName.length == 8 || secondInLocal.length == 8) {
             console.log("secondName = " + secondName);
-            window.localStorage.setItem("arr",JSON.stringify(arr));
-            window.localStorage.setItem("secondName",JSON.stringify(secondName));
+            if(secondInLocal != 8) {
+                window.localStorage.setItem("arr",JSON.stringify(arr));
+                window.localStorage.setItem("secondName",JSON.stringify(secondName));
+            }
+            $('#btnblock')[0].style.setProperty('margin-top', '398px');
             nameHidden();
             readyShow();
             $("#btn").hide();
+            $("#btn_goback").show();
         } else {
             readyHidden();
             nameShow();
@@ -305,13 +320,18 @@ function startSecond() {
 
 function startFrist() {
     if (!pressed) {
-        if (fristName.length == 3) {
+        var fristInLocal = JSON.parse(window.localStorage.getItem("fristName"))
+        if (fristName.length == 3 || fristInLocal.length == 3) {
             console.log("fristName = " + fristName);
-            window.localStorage.setItem("arr",JSON.stringify(arr));
-            // window.localStorage.setItem("fristName",JSON.stringify(fristName));
+            if(fristInLocal != 3) {
+                window.localStorage.setItem("arr",JSON.stringify(arr));
+                window.localStorage.setItem("fristName",JSON.stringify(fristName));
+            }
+            $('#btnblock')[0].style.setProperty('margin-top', '398px');
             nameHidden();
             readyShow();
             $("#btn").hide();
+            $("#btn_goback").show();
         } else {
             readyHidden();
             nameShow();
@@ -348,13 +368,18 @@ function startFrist() {
 
 function startGrand() {
     if (!pressed) {
-        if (grandName.length == 1) {
+        var grandInLocal = JSON.parse(window.localStorage.getItem("grandName"))
+        if (grandName.length == 1 || grandInLocal.length == 1) {
             console.log("grandName = " + grandName);
-            window.localStorage.setItem("arr",JSON.stringify(arr));
-            window.localStorage.setItem("grandName",JSON.stringify(grandName));
+            if(grandInLocal.length != 1) {
+                window.localStorage.setItem("arr",JSON.stringify(arr));
+                window.localStorage.setItem("grandName",JSON.stringify(grandName));
+            }
+            $('#btnblock')[0].style.setProperty('margin-top', '398px');
             nameHidden();
             readyShow();
             $("#btn").hide();
+            $("#btn_goback").show();
         } else {
             readyHidden();
             nameShow();
@@ -585,8 +610,9 @@ function backToIndex() {
 function readyShow() {
     $('#readyName').text("本轮抽奖结束，恭喜大家中奖！");
     $('#readyName').css("font-size","72px");
+    $('#readyName').css("margin-left","800px");
     $('#readyName').show();
-    $('#gobackbutton').show();
+    // $('#gobackbutton').show();
 }
 
 function readyHidden() {
@@ -701,7 +727,7 @@ var canvas = document.getElementById( 'canvas' ),
     ctx = canvas.getContext( '2d' ),
     // full screen dimensions
     cw = window.innerWidth,
-    ch = window.innerHeight * 4 / 5,
+    ch = window.innerHeight * 4 / 6,
     // firework collection
     fireworks = [],
     // particle collection
